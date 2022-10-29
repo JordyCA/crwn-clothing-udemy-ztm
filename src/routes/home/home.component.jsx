@@ -1,3 +1,6 @@
+//** Libraries */
+import { Outlet } from 'react-router-dom'
+
 //** Components */
 import Directory from './../../components/directory/directory.component.jsx';
 
@@ -31,7 +34,10 @@ const Home = () => {
   ]; 
 
   return (
-    <Directory categories={categories} />
+    <div>
+      <Directory categories={categories} />
+      <Outlet/>
+    </div>
   );
 }
 
