@@ -1,14 +1,18 @@
 //** Libraries */
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
     signInWithGooglePopup,
     createUserDocumentFromAuth,
     signInAuthUserWithEmailAndPassword
 } from "../../utils/firebase/firebase.utils";
 
+
 //** Components */
 import FormInput from "./../form-input/form-input.component.jsx";
 import Button from "../button/button.component";
+
+//** Contexts */
+import { UserContext } from "../../contexts/user.context";
 
 //** Styles */
 import './sign-in-form.style.scss';
@@ -38,8 +42,9 @@ const SignInForm = () => {
 
         const signInWithPasssword = async () => {
             try {
-                const response = await signInAuthUserWithEmailAndPassword(email, password);
-                console.log(response);
+                const {user} = await signInAuthUserWithEmailAndPassword(email, password);
+                
+                resetFormFields();
             } catch (error) {
                 console.log(error);
                 switch (error.code) {

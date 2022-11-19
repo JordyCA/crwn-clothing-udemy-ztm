@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 //** Components*/
 import App from './App';
+import { UserProvider } from './contexts/user.context';
 import reportWebVitals from './reportWebVitals';
 
 //** Css*/
@@ -17,7 +18,9 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
