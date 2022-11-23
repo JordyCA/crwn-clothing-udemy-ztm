@@ -27,6 +27,9 @@ const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
 
+
+    const { setCurrentUser } = useContext(UserContext);
+
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     }
@@ -42,8 +45,10 @@ const SignInForm = () => {
 
         const signInWithPasssword = async () => {
             try {
-                const {user} = await signInAuthUserWithEmailAndPassword(email, password);
-                
+                const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+
+                setCurrentUser(user);
+
                 resetFormFields();
             } catch (error) {
                 console.log(error);
@@ -54,7 +59,7 @@ const SignInForm = () => {
                     case 'auth/user-not-found':
                         alert('No user associated with this email');
                         break;
-                
+
                     default:
                         break;
                 }
@@ -80,8 +85,8 @@ const SignInForm = () => {
                 <FormInput label="Password" type="password" onChange={handleChange} name="password" minLength={6} maxLength={10} value={password} required />
 
                 <div className="buttons-container">
-                    <Button type="submit" children={'Sign up'}  />
-                    <Button type= "button" buttonType="google" children={'Google sign in'} onClick={signInGoogle} />
+                    <Button type="submit" children={'Sign up'} />
+                    <Button type="button" buttonType="google" children={'Google sign in'} onClick={signInGoogle} />
                 </div>
 
             </form>

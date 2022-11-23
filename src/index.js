@@ -5,8 +5,10 @@ import { BrowserRouter } from 'react-router-dom';
 
 //** Components*/
 import App from './App';
-import { UserProvider } from './contexts/user.context';
 import reportWebVitals from './reportWebVitals';
+
+//** Constexts */
+import { UserProvider } from './contexts/user.context';
 
 //** Css*/
 import './index.scss';
