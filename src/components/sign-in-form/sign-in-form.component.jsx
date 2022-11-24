@@ -12,7 +12,7 @@ import FormInput from "./../form-input/form-input.component.jsx";
 import Button from "../button/button.component";
 
 //** Contexts */
-import { UserContext } from "../../contexts/user.context";
+import { UserContext } from "../../contexts/user.context.jsx";
 
 //** Styles */
 import './sign-in-form.style.scss';
