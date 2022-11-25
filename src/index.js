@@ -9,6 +9,7 @@ import reportWebVitals from './reportWebVitals';
 
 //** Constexts */
 import { UserProvider } from './contexts/user.context';
+import { ProductsProvider } from './contexts/products.context';
 
 //** Css*/
 import './index.scss';
@@ -21,7 +22,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <ProductsProvider>
+          <App />
+        </ProductsProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
