@@ -2,24 +2,31 @@
 import { useContext } from 'react';
 
 //** Components */
+import CategoryPreview from '../../components/category-preview/category-preview.component.jsx';
 import ProductCard from './../../components/product-card/product-card.component.jsx';
 
 //** Contexts */
-import { ProductsContext } from '../../contexts/products.context.jsx';
+import { CategoriesContext } from '../../contexts/categories.context.jsx';
 
 //** Styles */
 import './shop.styles.scss'
 
 const Shop = () => {
 
-    const { products } = useContext(ProductsContext);
+    const { categoriesMap } = useContext(CategoriesContext);
+    console.log(categoriesMap);
     return (
-        <div className='products-container'>{
-            products.map(( product ) => (
-                <ProductCard key={product.id} product={product}/>
-            ))
-        }</div>
-    )
+        <div className='shop-container'>
+            {
+                Object.keys(categoriesMap).map((title) => {
+                    const products = categoriesMap[title];
+                    return (
+                        <CategoryPreview key={title} title={title} products={products} />
+                    );
+                })
+            }
+        </div>
+    );
 }
 
 export default Shop;

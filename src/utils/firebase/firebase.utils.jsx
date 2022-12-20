@@ -16,7 +16,9 @@ import {
     getDoc, 
     setDoc,
     collection,
-    writeBatch
+    writeBatch,
+    query, 
+    getDocs
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -57,6 +59,20 @@ export const addCollectionAndDocuments = async(collectionKey, objectsToAdd) => {
 
     await batch.commit();
     console.log("add collection/documents, done");
+}
+
+export const getCategoriesAndDocuments = async () => {
+    const collectionRef = collection(db, 'categories')
+    const quer = query(collectionRef);
+
+    const querySnapshot = await getDocs(quer);
+    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+        const {title, items} = docSnapshot.data();
+        acc[title.toLowerCase()] = items;
+        return acc;
+    }, {});
+
+    return categoryMap;
 }
 
 //** Save user in Firebase's databases */
