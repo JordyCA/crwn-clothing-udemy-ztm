@@ -13,7 +13,6 @@ import { CategoriesContext } from '../../contexts/categories.context.jsx';
 const CategoriesPreview = () => {
     const { categoriesMap } = useContext(CategoriesContext);
     
-    console.log(categoriesMap);
     return (
         <Fragment>
             {
