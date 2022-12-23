@@ -1,5 +1,10 @@
 //** Libraries */
-import { useContext, useEffect, useState } from 'react';
+import {
+    useContext,
+    useEffect,
+    useState,
+    Fragment
+} from 'react';
 import { useParams } from 'react-router-dom';
 
 //** Component */;
@@ -16,19 +21,20 @@ const Category = () => {
     const { categoriesMap } = useContext(CategoriesContext);
     const [products, setProducts] = useState(categoriesMap[category]);
 
-    console.log(category);
-
     useEffect(() => {
         setProducts(categoriesMap[category]);
     }, [category, categoriesMap]);
 
     return (
-        <div className='category-container'>
-            {
-                products &&
-                products.map((product) => <ProductCard key={product.id} product={product} />)
-            }
-        </div>
+        <Fragment>
+            <h2 className='category-title'>{category?.toLocaleUpperCase()}</h2>
+            <div className='category-container'>
+                {
+                    products &&
+                    products.map((product) => <ProductCard key={product.id} product={product} />)
+                }
+            </div>
+        </Fragment>
     )
 
 }

@@ -9,7 +9,7 @@ import {
 
 //** Components */
 import FormInput from "./../form-input/form-input.component.jsx";
-import Button from "../button/button.component";
+import Button, {BUTTON_TYPE_CLASSES} from "../button/button.component";
 
 
 //** Styles */
@@ -79,7 +79,7 @@ const SignInForm = () => {
 
                 <div className="buttons-container">
                     <Button type="submit" children={'Sign up'} />
-                    <Button type="button" buttonType="google" children={'Google sign in'} onClick={signInGoogle} />
+                    <Button type="button" buttonType={BUTTON_TYPE_CLASSES.google} children={'Google sign in'} onClick={signInGoogle} />
                 </div>
 
             </form>
