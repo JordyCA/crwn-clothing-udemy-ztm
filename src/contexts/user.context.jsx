@@ -8,6 +8,7 @@ import {
 
 //** Utils */
 import { onAuthStateChangeListener, createUserDocumentFromAuth } from "../utils/firebase/firebase.utils";
+import { createAction } from "../utils/reducer/reducer.utils";
 
 //** General values */
 export const UserContext = createContext({
@@ -42,9 +43,9 @@ const userReducer = (state, action) => {
 export const UserProvider = ({ children }) => {
     //const [currentUser, setCurrentUser] = useState(null);
     const [ {currentUser }, dispatch] = useReducer(userReducer, INITIAL_STATE );
-    console.log('%cuser.context.jsx line:43 currentUser', 'color: #007acc;', currentUser);
+    //console.log('%cuser.context.jsx line:43 currentUser', 'color: #007acc;', currentUser);
     const setCurrentUser = (user) => {
-        dispatch({ type: USER_ACTION_TYPES.SET_CURRENT_USER, payload: user});
+        dispatch(createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user));
     };
 
     const value = { currentUser, setCurrentUser };
