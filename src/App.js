@@ -14,11 +14,9 @@ import Authentication from './routes/authentication/authentication.component.jsx
 
 //** Utils */
 import { onAuthStateChangeListener, createUserDocumentFromAuth } from "./utils/firebase/firebase.utils.jsx";
-import { createAction } from "./utils/reducer/reducer.utils.jsx";
 
 //** Redux */
 import { setCurrentUser } from './store/user/user.action.jsx';
-import { INITIAL_STATE, userReducer } from './store/user/user.reducer.jsx';
 
 const App = () => {
   const dispatch = useDispatch();
