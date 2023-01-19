@@ -18,7 +18,8 @@ import {
     collection,
     writeBatch,
     query, 
-    getDocs
+    getDocs,
+    QuerySnapshot
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -66,13 +67,8 @@ export const getCategoriesAndDocuments = async () => {
     const quer = query(collectionRef);
 
     const querySnapshot = await getDocs(quer);
-    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-        const {title, items} = docSnapshot.data();
-        acc[title.toLowerCase()] = items;
-        return acc;
-    }, {});
 
-    return categoryMap;
+    return querySnapshot.docs.map(docSapShot => docSapShot.data());
 }
 
 //** Save user in Firebase's databases */

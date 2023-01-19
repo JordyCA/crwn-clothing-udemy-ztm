@@ -11,9 +11,7 @@ import Category from '../category/category.component.jsx';
 
 //** Utils */
 import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils.jsx';
-import { setCategoriesMap } from '../../store/categories/category.action.jsx';
-
-//** Redux */
+import { setCategories } from '../../store/categories/category.action.jsx';
 
 
 //** Styles */
@@ -23,16 +21,13 @@ const Shop = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const getCategoriesMap = async () => {
-            const categoryMap = await getCategoriesAndDocuments();
-            
-            dispatch(setCategoriesMap(categoryMap));
+        const getCategories = async () => {
+            const categoriesArray = await getCategoriesAndDocuments();
 
-            console.log(categoryMap);
-            
+            dispatch(setCategories(categoriesArray));
         }
         
-        getCategoriesMap();
+        getCategories();
 
     },[dispatch]);
 
