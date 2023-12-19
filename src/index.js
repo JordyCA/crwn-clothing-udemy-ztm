@@ -14,7 +14,7 @@ import { store } from './store/store.jsx';
 //** Contexts */
 // import { UserProvider } from './contexts/user.context';
 // import { CategoriesProvider } from './contexts/categories.context';
-import { CartProvider } from './contexts/cart.context';
+// import { CartProvider } from './contexts/cart.context';
 
 //** Css*/
 import './index.scss';
@@ -29,9 +29,9 @@ root.render(
       <BrowserRouter>
         {/* <UserProvider> */}
           {/* <CategoriesProvider> */}
-            <CartProvider>
+            {/* <CartProvider> */}
               <App />
-            </CartProvider>
+            {/* </CartProvider> */}
           {/* </CategoriesProvider> */}
         {/* </UserProvider> */}
       </BrowserRouter>
