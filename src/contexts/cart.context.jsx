@@ -21,12 +21,7 @@ export const CartContext = createContext({
     cartTotals: 0,
 });
 
-const INITIAL_STATE = {
-    isCartOpen: false,
-    cartItems: [],
-    cartCount: 0,
-    cartTotals: 0,
-}
+
 
 const CART_ACTION_TYPES = {
     SET_CART_ITEMS: 'SET_CART_ITEMS',
