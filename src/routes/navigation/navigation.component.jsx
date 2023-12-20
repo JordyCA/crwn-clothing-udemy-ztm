@@ -11,10 +11,6 @@ import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component
 //** Utils */
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
-//** Contexts */
-// import { UserContext } from '../../contexts/user.context';
-// import { CartContext } from '../../contexts/cart.context';
-
 //** Redux */
 import {selectCurrentUser} from '../../store/user/user.selector.jsx';
 import { selectIsCartOpen } from '../../store/cart/cart.selector.js';
@@ -23,9 +19,7 @@ import { selectIsCartOpen } from '../../store/cart/cart.selector.js';
 import {NavigationContainer, LogoContainer, NavLinksContainer, NavLink} from  './navigation.styles.jsx';
 
 const Navigation = () => {
-    // const { currentUser } = useContext(UserContext);
     const currentUser = useSelector(selectCurrentUser);
-    // const { isCartOpen } = useContext(CartContext);
     const isCartOpen = useSelector(selectIsCartOpen);
     return (
         <Fragment>
