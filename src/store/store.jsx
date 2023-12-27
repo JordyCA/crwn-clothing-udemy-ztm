@@ -1,11 +1,12 @@
 //** Libraries */
 import {
-    compose, 
+    compose,
     legacy_createStore as createStore,
     applyMiddleware
 } from 'redux';
-import {  persistStore, persistReducer } from 'redux-persist';
-import storage  from 'redux-persist/lib/storage';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import logger from 'redux-logger';
 
 // import logger from 'redux-logger';
 
@@ -20,24 +21,13 @@ const persistConfg = {
 
 const persistedReducer = persistReducer(persistConfg, rootReducer);
 
-// curry function 
-const loggerMiddleware = (store) => (next) => (action) => {
-    if (!action.type) {
-        return next(action);
-    }
 
-    console.log('%cstore.jsx line:19 Type', 'color: #007acc;', action.type);
-    console.log('%cstore.jsx line:20 payload', 'color: #007acc;', action.payload);
-    console.log('%cstore.jsx line:21 currentSate', 'color: #007acc;', store.getState());
+const middleWares = [process.env.NODE_ENV !== 'production' && logger].filter(Boolean);
 
-    next(action);
+const composerEnhancer = (process.env.NODE_ENV !== 'production'
+    && window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+const composedEnhancers = composerEnhancer(applyMiddleware(...middleWares));
 
-    console.log('%cstore.jsx line:25 nextAction', 'color: #007acc;', store.getState());
-} 
-
-const middleWares =  [loggerMiddleware];
-
-const composedEnhancers = compose(applyMiddleware(...middleWares));
 
 export const store = createStore(persistedReducer, undefined, composedEnhancers);
 
