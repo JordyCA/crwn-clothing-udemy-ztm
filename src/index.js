@@ -3,13 +3,14 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 //** Components*/
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 /** Store - Redux  */
-import { store } from './store/store.jsx';
+import { store, persistor } from './store/store.jsx';
 
 //** Css*/
 import './index.scss';
@@ -21,9 +22,11 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <PersistGate persistor={persistor}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
