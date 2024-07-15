@@ -62,8 +62,8 @@ export const addCollectionAndDocuments = async(collectionKey, objectsToAdd) => {
     console.log("add collection/documents, done");
 }
 
-export const getCategoriesAndDocuments = async () => {
-    const collectionRef = collection(db, 'categories')
+export const getCategoriesAndDocuments = async (categories = 'categories') => {
+    const collectionRef = collection(db, categories)
     const quer = query(collectionRef);
 
     const querySnapshot = await getDocs(quer);
