@@ -10,8 +10,7 @@ import CategoriesPreview from '../categories-preview/categories-preview.componen
 import Category from '../category/category.component.jsx';
 
 //** Utils */
-import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils.jsx';
-import { fetchCategoriesAsync } from '../../store/categories/category.action.jsx';
+import { fetchCategoriesStart } from '../../store/categories/category.action.jsx';
 
 
 //** Styles */
@@ -21,7 +20,7 @@ const Shop = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchCategoriesAsync());
+        dispatch(fetchCategoriesStart());
 
     },[]);
 
